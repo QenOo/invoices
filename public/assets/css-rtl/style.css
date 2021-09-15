@@ -4,7 +4,7 @@
 Project        :   VALEX - HTML5 Bootstrap Admin Template
 Version        :   V.1
 Create Date    :   09/05/20
-Copyright      :   Spruko Technologies Private Limited 
+Copyright      :   Spruko Technologies Private Limited
 Author         :   SprukoSoft
 Author URL     :   https://themeforest.net/user/sprukosoft
 Support	       :   support@spruko.com
@@ -81,8 +81,6 @@ License        :   Licensed under ThemeForest License
 67  Tabs
 */
 /* ######## FONT ######## */
-/* ############### FONTS IMPORT ############### */
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900");
 /* ######## BOOTSTRAP ######## */
 /*Color variables*/
 /*gray variables*/
@@ -90,7 +88,7 @@ License        :   Licensed under ThemeForest License
 /*black variables*/
 /*shadow variables*/
 html {
-  font-family: sans-serif;
+font-family: 'Cairo', sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
@@ -100,7 +98,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Cairo', sans-serif !important;
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.5;

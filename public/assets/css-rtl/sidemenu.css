@@ -502,7 +502,7 @@ slide is-expanded side-menu__item {
 
 .slide.is-expanded .sub-side-menu__item:before {
   content: "\e92f";
-  font-family: 'feather' !important;
+  font-family: 'Cairo', sans-serif;
   position: absolute;
   top: 9px;
   left: 23px;
