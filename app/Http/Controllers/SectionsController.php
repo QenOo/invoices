@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\sections;
+use App\Models\Section;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SectionsController extends Controller
 {
@@ -14,7 +15,8 @@ class SectionsController extends Controller
      */
     public function index()
     {
-        //
+        $sections = Section::all();
+        return view('sections.index', compact('sections'));
     }
 
     /**
@@ -35,7 +37,22 @@ class SectionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validatedData = $request->validate([
+            'section_name' => ['required', 'unique:sections', 'max:255'],
+        ],
+        [
+            'section_name.required' => 'اسم القسم مطلوب',
+            'section_name.unique' => 'قيمة حقل القسم مُستخدمة من قبل'
+        ]);
+
+        Section::create([
+            'section_name' => $request->section_name,
+            'description' => $request->description,
+            'created_by' => (Auth::user()->name),
+        ]);
+
+
     }
 
     /**
@@ -67,9 +84,26 @@ class SectionsController extends Controller
      * @param  \App\Models\sections  $sections
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, sections $sections)
+    public function update(Request $request)
     {
-        //
+        $id = $request->id;
+
+        $validatedData = $request->validate([
+            'section_name' => 'required|max:255|unique:sections,section_name,'.$id,
+        ],
+            [
+                'section_name.required' => 'اسم القسم مطلوب',
+                'section_name.unique' => 'قيمة حقل القسم مُستخدمة من قبل'
+            ]);
+
+        $sections_data = Section::find($id);
+        $sections_data->update([
+            'section_name' => $request->section_name,
+            'description' => $request->description
+        ]);
+
+
+        return redirect()->back()->with('edit', 'تعديل القسم');
     }
 
     /**
@@ -78,8 +112,11 @@ class SectionsController extends Controller
      * @param  \App\Models\sections  $sections
      * @return \Illuminate\Http\Response
      */
-    public function destroy(sections $sections)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->id;
+
+        Section::find($id)->delete();
+        return redirect()->back()->with('deleted', 'حذف القسم');
     }
 }
