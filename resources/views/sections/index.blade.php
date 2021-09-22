@@ -32,8 +32,6 @@
     <!-- row -->
     <div class="row">
 
-
-
         <!--div-->
         <div class="col-xl-12">
 
@@ -94,6 +92,18 @@
                     <div class="alert alert-success fade show mb-1" role="alert">
                         <span class="alert-inner--icon"><i class="fe fe-thumbs-up"></i></span>
                         <span class="alert-inner--text"><strong>نجاح!</strong> {{ session()->get('deleted') }} </span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <!-- Alert -->
+                @endif
+
+                @if(session()->has('add'))
+                <!-- Alert -->
+                    <div class="alert alert-success fade show mb-1" role="alert">
+                        <span class="alert-inner--icon"><i class="fe fe-thumbs-up"></i></span>
+                        <span class="alert-inner--text"><strong>نجاح!</strong> {{ session()->get('add') }} </span>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>

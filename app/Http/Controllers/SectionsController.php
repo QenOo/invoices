@@ -52,6 +52,7 @@ class SectionsController extends Controller
             'created_by' => (Auth::user()->name),
         ]);
 
+        return redirect()->back()->with('add', 'اضافة قسم');
 
     }
 
@@ -91,10 +92,10 @@ class SectionsController extends Controller
         $validatedData = $request->validate([
             'section_name' => 'required|max:255|unique:sections,section_name,'.$id,
         ],
-            [
-                'section_name.required' => 'اسم القسم مطلوب',
-                'section_name.unique' => 'قيمة حقل القسم مُستخدمة من قبل'
-            ]);
+        [
+            'section_name.required' => 'اسم القسم مطلوب',
+            'section_name.unique' => 'قيمة حقل القسم مُستخدمة من قبل'
+        ]);
 
         $sections_data = Section::find($id);
         $sections_data->update([
